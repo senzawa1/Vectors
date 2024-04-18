@@ -1,31 +1,38 @@
 #include <iostream>
 #include <vector>
-#include <string>
+
 using namespace std;
 int main()
 {
+	int n;
+	vector<int> temp;
+	vector<vector<int>> num;
+	//No fixed size when it comes to a vector within a vector
+	//temp acts as a temporary vector to fill the num vector
+	//NEED TO CONTROL THE SIZE OF THE VECTOR
 
-    string student = "";
-    int numOfGrades;
-    double grade;
-    double totalGrade = 0;
-    cout << "Enter the name of the student: ";
-    getline(cin, student);
-    cout << "How many grades do you want to enter?: ";
-    cin >> numOfGrades;
-    cin.ignore();
+	for (int r =0; r < 3; r++)
+	{
+		for (int c = 0; c < 4; c++)
+		{
+			cout << "Enter row # " << (r + 1) << "Column # " << (c + 1) << " ==>";
+			cin >> n;
+			temp.push_back(n);
+		}
+		num.push_back(temp);
+		temp.clear();
+		//erases all the current values from temp
+	}
 
-    vector<double> grades;
-    for (int i = 0; i < numOfGrades; i++)
-    {
-        grade = 0;
-        cout << "Enter grade #" << (i + 1) << ": ";
-        cin >> grade;
-        grades.push_back(grade);
-        totalGrade += grade;
-    }
+	cout << "\n==================================\n\n";
 
-    cout << "=======================================\n";
-    cout << "Student name: " << student << endl;
-    cout << "Grade average: " << (totalGrade / numOfGrades);
+	for (int r = 0; r < num.size(); r++)
+	{
+		for (int c = 0; c < num[r].size(); c++)
+		//size of the vector for row r
+		{
+			cout << num[r][c] << "\t";
+		}
+		cout << endl;
+	}
 }
